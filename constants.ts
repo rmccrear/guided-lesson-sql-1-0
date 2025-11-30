@@ -435,5 +435,137 @@ Now we are dealing with capacity. We don't just want to know *how many* dishes t
             summary: "Solution: Smith Family Capacity"
         }
     ]
+  },
+  {
+    id: 'thinking-cap-codeorg-explore',
+    title: 'Thinking Cap: Explore Code.org Data',
+    description: 'Discover insights in real-world datasets.',
+    type: 'challenge',
+    content: `
+**Goal:** Apply everything you've learned to explore a large, real-world dataset.
+
+**User Story:** As a data analyst, I want to explore a large dataset to discover interesting patterns and insights.
+
+---
+
+## ⚡ Challenge Mode
+
+Now it's time to get creative! You imported a dataset from Code.org earlier (movies, music charts, or another dataset). This is a much larger and more complex table than our simple potluck database.
+
+**Your Mission:**
+Explore your imported dataset and write queries to answer interesting questions. There are no "correct" answers here - the goal is to practice thinking like a data analyst.
+
+**Instructions:**
+1.  Open your Supabase SQL Editor.
+2.  Look at your Code.org table to see what columns are available.
+3.  Come up with at least 3-5 interesting questions you can answer with SQL.
+4.  Write and run queries to find the answers.
+
+**Example Questions (adjust based on your dataset):**
+- **Movies:** What's the oldest movie in the database? Which genre appears most often?
+- **Music:** Which artist has the most songs? What year had the most releases?
+- **General:** What's the average value of a numeric column? How many unique entries exist?
+
+### 💡 Tips
+*   Use \`SELECT DISTINCT\` to find unique values
+*   Use \`ORDER BY\` with \`LIMIT\` to find top/bottom results
+*   Combine \`COUNT\`, \`SUM\`, \`AVG\` with \`GROUP BY\` for powerful insights
+*   Use \`LIKE\` for pattern matching in text fields
+
+### ✅ Check
+*   You've written at least 3 different queries
+*   You've used at least 2 different aggregate functions (COUNT, SUM, AVG, etc.)
+*   You've discovered something interesting about your data!
+`,
+    challenges: [
+        "What are the column names in your table? (Hint: Just SELECT * and look at the headers)",
+        "How many total rows are in your dataset? Use COUNT(*)",
+        "Pick a text column - what are the unique values? Use SELECT DISTINCT",
+        "Find the top 5 or bottom 5 of something using ORDER BY and LIMIT",
+        "CREATIVE CHALLENGE: Come up with your own question and answer it!"
+    ],
+    codeSnippets: [
+        {
+            language: 'sql',
+            code: "-- Example: Find the 5 most recent movies (adjust table/column names)\nSELECT title, year FROM movies \nORDER BY year DESC \nLIMIT 5;",
+            summary: "Example: Top 5 by Year"
+        },
+        {
+            language: 'sql',
+            code: "-- Example: Count items by category\nSELECT genre, COUNT(*) as count \nFROM movies \nGROUP BY genre \nORDER BY count DESC;",
+            summary: "Example: GROUP BY for Categories"
+        }
+    ]
+  },
+  {
+    id: 'thinking-cap-codeorg-advanced',
+    title: 'Thinking Cap: Advanced Analysis',
+    description: 'Push your SQL skills to the limit.',
+    type: 'challenge',
+    content: `
+**Goal:** Combine multiple SQL concepts to perform sophisticated data analysis.
+
+**User Story:** As a senior data analyst, I want to perform complex queries that combine filtering, aggregation, and sorting to extract meaningful insights.
+
+---
+
+## ⚡⚡ ADVANCED Challenge Mode
+
+This is the ultimate challenge! You'll need to combine everything you've learned: WHERE clauses, aggregate functions, GROUP BY, ORDER BY, and creative thinking.
+
+**Your Mission:**
+Answer increasingly complex questions about your Code.org dataset. Each question requires combining multiple SQL concepts.
+
+**Instructions:**
+1.  These challenges build on each other in complexity
+2.  Start with the easier ones and work your way up
+3.  Don't be afraid to experiment and make mistakes
+4.  Use the AI Tutor if you get stuck - that's what it's there for!
+
+### 🏆 Challenge Levels
+
+**Level 1: Filtering + Aggregation**
+- Find the average of something, but only for a specific category
+- Example: "What's the average rating for action movies?"
+
+**Level 2: Grouping + Sorting**
+- Group by one column, aggregate another, then sort the results
+- Example: "Which year had the most movies released?"
+
+**Level 3: Complex Combinations**
+- Combine multiple WHERE conditions with GROUP BY and ORDER BY
+- Example: "For movies after 2010, which genre has the highest average rating?"
+
+### 💡 Pro Tips
+*   Break complex problems into smaller steps
+*   Test each part of your query separately
+*   Use comments (--) to document your thinking
+*   The HAVING clause can filter results AFTER grouping
+
+### ✅ Check
+*   You've successfully used GROUP BY with an aggregate function
+*   You've combined WHERE with GROUP BY
+*   You've used ORDER BY to sort aggregated results
+*   You feel confident exploring data with SQL!
+`,
+    challenges: [
+        "Find the average of a numeric column, but only for rows that match a specific text value",
+        "GROUP BY a category column and COUNT how many items are in each category. Sort from most to least.",
+        "Find which category/group has the highest average value for a numeric column",
+        "Use multiple WHERE conditions (AND/OR) combined with aggregation",
+        "ULTIMATE CHALLENGE: Write a query that uses WHERE, GROUP BY, an aggregate function (COUNT/SUM/AVG), and ORDER BY all in one query!"
+    ],
+    codeSnippets: [
+        {
+            language: 'sql',
+            code: "-- Template for complex query\nSELECT category_column, COUNT(*) as total, AVG(numeric_column) as average\nFROM your_table\nWHERE some_condition = 'value'\nGROUP BY category_column\nORDER BY total DESC\nLIMIT 10;",
+            summary: "Template: Complex Query Structure"
+        },
+        {
+            language: 'sql',
+            code: "-- Example: Movies with highest average ratings by genre (2010+)\nSELECT genre, AVG(rating) as avg_rating, COUNT(*) as movie_count\nFROM movies\nWHERE year >= 2010\nGROUP BY genre\nHAVING COUNT(*) >= 5  -- Only genres with 5+ movies\nORDER BY avg_rating DESC;",
+            summary: "Solution: Advanced Analysis Example"
+        }
+    ]
   }
 ];
