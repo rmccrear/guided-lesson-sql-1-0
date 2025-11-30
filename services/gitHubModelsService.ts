@@ -100,9 +100,9 @@ The AI Tutor will be automatically enabled in Codespaces with GitHub Models.
 
 **Or paste this prompt into ChatGPT:**
 
-\`\`\`
+\`\`\`\`
 ${chatGPTPrompt}
-\`\`\``;
+\`\`\`\``;
   }
 
   try {
