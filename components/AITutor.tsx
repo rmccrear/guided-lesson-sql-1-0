@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { sendMessageToGemini } from '../services/geminiService';
+import { sendMessageToGitHubModels } from '../services/gitHubModelsService';
 import { ChatMessage, Lesson } from '../types';
 import { Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
 
@@ -43,14 +43,13 @@ export const AITutor: React.FC<AITutorProps> = ({ contextLesson }) => {
     setInput('');
     setIsLoading(true);
 
-    // Prepare history for API (map internal type to API type if strictly needed, or pass directly)
-    // The service handles mapping.
-    const apiHistory = messages.map(m => ({ role: m.role, text: m.text }));
-    
-    // Add current user message to history for the call
-    apiHistory.push({ role: 'user', text: input });
+    // Convert message history to GitHub Models format (model -> assistant)
+    const apiHistory = messages.map(m => ({ 
+      role: m.role === 'model' ? 'assistant' as const : m.role as 'user',
+      content: m.text 
+    }));
 
-    const responseText = await sendMessageToGemini(apiHistory, input, contextLesson.title);
+    const responseText = await sendMessageToGitHubModels(apiHistory, input, contextLesson.title);
 
     const modelMsg: ChatMessage = { role: 'model', text: responseText, timestamp: Date.now() };
     setMessages(prev => [...prev, modelMsg]);
@@ -134,7 +133,7 @@ export const AITutor: React.FC<AITutorProps> = ({ contextLesson }) => {
         </div>
         <div className="mt-2 flex items-center justify-center gap-2 text-xs text-gray-500">
             <Sparkles size={12} />
-            <span>Powered by Gemini 2.5 Flash</span>
+            <span>Powered by GitHub Models (GPT-4o mini)</span>
         </div>
       </div>
     </div>

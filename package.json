@@ -4,17 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node -e \"if (process.env.CODESPACES === 'true' && process.env.GITHUB_TOKEN) { console.log('\\n\\x1b[33m⚠️  Security Warning:\\x1b[0m Do not share your dev server URL.\\nYour GITHUB_TOKEN is embedded in the build for AI processing.\\n'); }\"",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@azure-rest/ai-inference": "^1.0.0-beta.6",
+    "@azure/core-auth": "^1.10.1",
+    "@google/genai": "^1.30.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "lucide-react": "^0.555.0",
-    "@google/genai": "^1.30.0",
-    "vite": "^7.2.4",
-    "@vitejs/plugin-react": "^5.1.1"
+    "vite": "^7.2.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
