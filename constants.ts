@@ -130,7 +130,7 @@ Now we dive deeper. You will query the 'World' country profile table. This lesso
 *   You can combine logic with \`AND\`, \`OR\`.
 `,
     externalLink: {
-      url: 'https://sqlzoo.net/wiki/SELECT_from_World',
+      url: 'https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial',
       label: 'Start Lesson 2: SELECT from World'
     }
   },
@@ -160,7 +160,7 @@ Text strings always need single quotes: \`subject = 'Chemistry'\`.
 Numbers do not: \`yr = 1970\`.
 `,
     externalLink: {
-      url: 'https://sqlzoo.net/wiki/SELECT_from_Nobel',
+      url: 'https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial',
       label: 'Start Lesson 3: SELECT from Nobel'
     }
   },
@@ -318,8 +318,8 @@ Complete the tutorial on SQL Zoo before moving to the next step.
 3.  Complete the exercises.
 `,
     externalLink: {
-        url: 'https://sqlzoo.net/wiki/SUM_and_COUNT',
-        label: 'Learn SUM and COUNT'
+      url: 'https://sqlzoo.net/wiki/SUM_and_COUNT_Tutorial',
+      label: 'Learn SUM and COUNT'
     }
   },
   {
